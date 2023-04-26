@@ -1,0 +1,14 @@
+{
+  "name": "test-lambda",
+  "version": "1.0.0",
+  "author": "Jonnie Russell <jonnie@invotra.com",
+  "license": "MIT-0",
+  "dependencies": {
+    "aws-sdk": "^2.1191.0",
+    "zip-build": "^1.6.0"
+  },
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean;mkdir dist;zip-build . dist --template=test-lambda.zip"
+  }
+}

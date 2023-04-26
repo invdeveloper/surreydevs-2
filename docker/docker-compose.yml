@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  # Localstack creates a testing environment on your local computer that 
+  # emulates the AWS cloud environment in terms of functionality and APIs
+  localstack:
+    image: localstack/localstack
+    ports:
+      - '4566:4566'
+    environment:
+      - SERVICES=events,iam,lambda,s3,logs,sts,sqs,dynamodb,ses,apigateway
+      - DATA_DIR=/tmp/localstack/data
+      - DEBUG=true
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - AWS_ACCESS_KEY_ID=access_key
+      - AWS_SECRET_ACCESS_KEY=secret_key
+      - AWS_DEFAULT_REGION=eu-west-2
+      - LAMBDA_EXECUTOR=local
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
